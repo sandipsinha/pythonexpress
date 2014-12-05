@@ -1,0 +1,17 @@
+{% extends "layoutinq.html" %}
+
+{% block body %}
+<div class="formarea">
+    <form   method="POST" class='subfieldsset'>
+    	<div>
+    	 {{ form.hidden_tag() }}
+       Enter a part of First or Last Name:</div><div>
+         {{ form.name(size=20) }}
+        	{{ form.id }}
+         {{ form.submit(class="button") }}</div><br><br>
+         </form>
+       
+     </form>
+    
+  </div>  
+{% endblock %}

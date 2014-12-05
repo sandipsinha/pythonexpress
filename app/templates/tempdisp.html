@@ -1,0 +1,22 @@
+{% extends "layoutinq.html" %}
+{% block body %}
+<div class="container>
+	
+    <form action="{{ url_for('tempedit') }}" method=post class='subfieldsset'>
+    	<div class="formarea">
+      <table class="subfieldsset">
+      	{% for temps in s %}<tr><td>
+    	First Name :</td><td> {{ temps.first_name }}</td><td>
+        Last Name : </td><td> {{ temps.last_name }}</td><td>
+        Action Type: </td><td> {{ temps.action_type }}</td><td>
+        <td><a href="{{ url_for('tempedit',id=temps.id,effdt=temps.effdt,type=temps.action_type) }}"><button class='cupid-blue'>Edit</button></a></td>
+           
+        <td><a href="{{ url_for('tempdel',id=temps.id,effdt=temps.effdt,type=temps.action_type) }}" onclick="return confirm_alert(this);"><button class='cupid-blue'>Delete</button></a></td>  	 
+    	</tr>
+		{% endfor %}
+      </table>
+      
+       </div>
+    </form>
+  </div>  
+{% endblock %}

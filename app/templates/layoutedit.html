@@ -1,0 +1,74 @@
+<!doctype html>
+<head>
+	<title>HREXPRESS</title>
+	<div id="header">
+		<h1>
+			{{ contexts }}
+		</h1>
+	</div>
+
+	 {% include "headers.html" %}
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script type='text/javascript' src="/pythonxpress/app/static/js/tempedit_1.js"></script>
+    <link href="/pythonxpress/app/static/css/mystyle.css" rel="stylesheet">
+ 	
+    <script type="text/javascript">
+    $().ready(function() {
+    	DoHousekeeping();  //located in tempedit_1.js
+        
+	    window.onload = populatehr;
+	    
+    
+	    $("#act_type").change(function(){
+	    if ($("#action_type").val() == 'cnv' || $("#act_type").val() == 'cnv'){
+	    	$("#emplid").show();
+	    	$('label[for="emplid"]').show();
+	    }
+	    else
+	    { 	
+	        $("#emplid").slideUp();
+	        $('label[for="emplid"]').slideUp();
+	    }
+	    })
+	    
+	    $("#mlsnd").change(function(){  
+		 	if (this.checked){
+		 		$(".mailr").show();
+		 		$(".chzn-select").show();
+		 		//$(".onemr").show();
+		 		}  
+		 	else
+		 		{
+
+		 		$(".mailr").slideUp();
+		 		$(".chzn-select").slideUp();
+		 		//$(".onemr").slideUp();
+		 		}
+	    })
+	    
+ 		    })
+    </script>
+
+</head>    
+<body>
+	<div id="bg">
+	{% include "menunav.html" %}
+
+			  <div id="container">
+			  {% for message in get_flashed_messages() %}
+			    <div class=flash>{{ message }}</div>
+			  {% endfor %}
+
+			  {% block body %}{% endblock %}
+
+			 
+				<div id="footer">
+					Copyright © Site name, 20XX
+				</div>
+		 
+				</div>
+	</div>
+	
+</body>	

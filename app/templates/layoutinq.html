@@ -1,0 +1,51 @@
+<!doctype html>
+<head>
+	<title>HREXPRESS</title>
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	{% include "headers.html" %}
+	<script type='text/javascript' src="/pythonxpress/app/static/js/tempinq.js"></script>
+
+    <script type="text/javascript">
+    $().ready(function() {
+    	CheckValidForm();  //
+        DoHousekeeping();
+    	function confirm_alert(node) 
+    		{
+    		return confirm("Are you sure that you want to Delete this? .");
+			}
+ 	window.onload = populatehr;
+	alert('the value is' + $("#hr").val());
+    })
+    </script>
+	 
+</head>
+<body>
+	{% include "menunav.html" %}
+<div id="bg">
+<div id="outer">
+	<div id="header">
+   <div id="logo">
+		<h1>
+			{{ contexts }}
+		</h1>
+		 
+		</div>
+
+		
+  </div>
+<div id="container">
+			  {% for message in get_flashed_messages() %}
+			    <div class=flash>{{ message }}</div>
+			  {% endfor %}
+
+			  {% block body %}{% endblock %}
+
+			 
+			<div id="footer">
+				Copyright © Site name, 20XX
+			</div>
+		 
+</div>
+ 
+</body>

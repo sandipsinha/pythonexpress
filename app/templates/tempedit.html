@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+{% extends "layoutedit.html" %}
+{% block body %}
+ 
+	<div class="formarea">
+					  {% for message in get_flashed_messages() %}
+			    		<div class='flash'>{{ message }}</div>
+			  			{% endfor %}
+			  
+			  {% if form.errors %}
+			    <ul class="error">
+			        {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+			            {% for error in field_errors %}
+			                <li>{{ form[field_name].label }}: {{ error }}</li>
+			            {% endfor %}
+			        {% endfor %}
+			    </ul>
+			{% endif %}
+
+    <form  method="post" id='tmpedt'>
+    	
+    <div class="subfieldsset"  >
+ 
+      {{ form.hidden_tag() }}
+     <div>
+  	    {{ form.act_type.label }} {{ form.act_type}}  {{ form.effdt.label }} {{ form.effdt }}
+     </div>
+    <div>
+    {{ form.reason.label }} {{ form.reason}}  {{ form.classification.label }} {{ form.classification }}
+    {{ form.type.label }} {{ form.type}} 	
+    </div>	
+
+     <div> 
+    	{{ form.last_name.label }}{{ form.last_name }}  {{ form.first_name.label }}{{ form.first_name }}
+     </div>
+      
+      
+     <div>
+     	<legend>Contacts</legend>
+     	{{ form.busn_phone.label }}{{ form.busn_phone }} {{ form.busn_email.label }}{{ form.busn_email }}
+     </div>
+      <div>
+     	<legend>Job Details</legend>
+     	{{ form.business_title.label }}{{ form.business_title }}  {{ form.mgr.label }}{{ form.mgr }}
+     	{{ form.legal_entity.label }}{{ form.legal_entity }} 
+     	</div>
+     	<div>
+     	{{ form.location.label }}{{ form.location }} {{ form.remote.label }} {{ form.remote }}
+     	
+     </div>
+     <div>
+     	<legend>Organization Details</legend>
+     	{{ form.dept.label }}{{ form.dept }} {{ form.finance.label }}{{ form.finance }} {{ form.finance_org.label }}{{ form.finance_org }}<br>
+     </div>
+     <div>	
+     	{{ form.emplid.label }}{{ form.emplid }}
+     </div>
+     <div>
+     	<legend>HR Details</legend>
+     	{{ form.hr_name.label }}{{ form.hr_name }} {{ form.hr_contact}} {{ form.req_num.label }}{{ form.req_num }} {{ form.it_end_date.label }}{{ form.it_end_date }}
+     </div>
+     <div>
+     	{{ form.vendor_id.label }}{{ form.vendor_id }} {{ form.bill_rate.label }}{{ form.bill_rate }} {{ form.hourly_rate.label }}{{ form.hourly_rate }}
+     </div>
+     <div>
+     	{{ form.comments.label }}{{ form.comments(cols="90", rows="2") }} 
+     </div>
+     <div>
+     	{{ form.mlsnd.label }}{{form.mlsnd}}
+     </div>
+      <div>
+     {{form.action_type}} 	
+     {{ form.id }} <div class='mailr' title="Select Mail Recipients"><h3 class='mhead'>Select multiple recipients</h3>{{form.mailr (class="chzn-select",placeholder="Pick a Recipient...",tabindex="2", style="width:330px")}}</div>
+     {{ form.submit(class="button") }}
+     </div>
+      
+  
+      </form>
+      <div id=result>?</div>
+ </div>
+{% endblock %}
+
